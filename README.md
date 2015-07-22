@@ -42,3 +42,14 @@ Volleyer : https://github.com/naver/volley-extensions/tree/master/volleyer
   }]
 }
 ```
+
+``` json
+// jackson4.json
+{
+  "result":
+  {
+    "name":"title1",
+    "url":"http://google.co.kr/1"
+  }
+}
+```

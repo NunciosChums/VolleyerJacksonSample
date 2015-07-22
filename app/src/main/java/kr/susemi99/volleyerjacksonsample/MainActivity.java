@@ -25,6 +25,7 @@ public class MainActivity extends Activity
     findViewById(R.id.button1).setOnClickListener(clickListener);
     findViewById(R.id.button2).setOnClickListener(clickListener);
     findViewById(R.id.button3).setOnClickListener(clickListener);
+    findViewById(R.id.button4).setOnClickListener(clickListener);
   }
 
   private void callJackson1()
@@ -42,6 +43,11 @@ public class MainActivity extends Activity
     Volleyer.volleyer().get("http://test.susemi99.kr/jackson3.json").withTargetClass(MyItems.class).withListener(listener3).withErrorListener(errorListener).execute();
   }
 
+  private void callJackson4()
+  {
+    Volleyer.volleyer().get("http://test.susemi99.kr/jackson4.json").withTargetClass(MyItemParent.class).withListener(listener4).withErrorListener(errorListener).execute();
+  }
+
   private View.OnClickListener clickListener = new View.OnClickListener()
   {
     @Override
@@ -54,6 +60,8 @@ public class MainActivity extends Activity
         callJackson2();
       else if (id == R.id.button3)
         callJackson3();
+      else if (id == R.id.button4)
+        callJackson4();
     }
   };
 
@@ -92,6 +100,16 @@ public class MainActivity extends Activity
       {
         textResult.append(item.name + ", " + item.url + "\n");
       }
+    }
+  };
+
+  private Response.Listener<MyItemParent> listener4 = new Response.Listener<MyItemParent>()
+  {
+    @Override
+    public void onResponse(MyItemParent myItemParent)
+    {
+      textResult.setText("==== jackson4 ====\n");
+      textResult.append(myItemParent.item.name + ", " + myItemParent.item.url + "\n");
     }
   };
 
